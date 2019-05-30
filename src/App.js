@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Blogs from './features/blogs'
 import BlogForm from './features/blogs/blog-form'
 import Posts from './features/posts';
 
+import './App.css';
 
 const initBlogs = [
   {
@@ -52,18 +53,39 @@ function App() {
 
   }, [])
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Unlearning Labs
-        </p>
-      </header>
+  function loadBlog() {
+    return <>
       <h2>Blogs Listing</h2>
-      <BlogForm addBlog={addBlog} />
       <Blogs blogs={blogs} onShowPost={showPosts} deleteBlog={deleteBlog} />
-      <Posts posts={posts} deletePost={deletePost}/>
-    </div>
+    </>
+  }
+
+  function loadBlogForm() {
+    return <>
+      <BlogForm addBlog={addBlog} />
+    </>
+  }
+
+  function loadPosts(props) {
+    console.log("lp:", props);
+    let p = posts.filter(post => post.blogId == props.match.params.blogId);
+    return <Posts posts={p} deletePost={deletePost} />
+  }
+
+  return (
+    <Router>
+      <div className="app">
+        <header className="app-header">
+          <p>
+            Unlearning Labs
+        </p>
+          <Link to="/">Blogs</Link>
+        </header>
+        <Route exact path="/" render={loadBlog} />
+        <Route path="/blog-form" render={loadBlogForm} />
+        <Route path="/posts/:blogId" render={loadPosts} />
+      </div>
+    </Router>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 export default function Blogs(props) {
   let { blogs } = props;
@@ -15,7 +16,7 @@ export default function Blogs(props) {
           <div>{blog.desc}</div>
           <div>{blog.category}</div>
 
-          <button onClick={props.onShowPost.bind(this, blog.id)}>Show Posts</button>
+          <Link to={`/posts/${blog.id}`}>Show Posts</Link>
           <button onClick={() => props.deleteBlog(blog.id)} className="button muted-button">
             Delete
          </button>
