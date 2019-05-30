@@ -22,7 +22,7 @@ export default function PostForm(props) {
     >
       <label>Title</label>
       <input type="text" name="title" value={post.title} onChange={handleInputChange} />
-      <label>Description</label>
+      <label>Blog</label>
       <input type="text" name="blogId" value={post.desc} onChange={handleInputChange} />
       <button>Add new post</button>
     </form>

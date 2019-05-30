@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 import PostForm from './post-form';
 
-export default function Posts(props) {
-  let { posts } = props;
+import './post.css';
+
+export default function Posts({ posts, blogId, addPost, deletePost }) {
 
   useEffect(() => {
 
@@ -18,16 +19,17 @@ export default function Posts(props) {
         <div>{post.category}</div>
 
         <Link to={`/posts/${post.id}/read`}>Read more..</Link>
-        <button onClick={() => props.deletePost(post.id)}>Delete</button>
+        <button onClick={() => deletePost(post.id)}>Delete</button>
         <hr className="content-divider" />
       </div >
     )
-})
+  })
 
-return (
-  <>
-    <PostForm addPost={props.addPost} />
-    {postView}
-  </>
-)
+  return (
+    <>
+     
+      <PostForm addPost={addPost} />
+      {postView}
+    </>
+  )
 }

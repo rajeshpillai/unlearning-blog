@@ -20,13 +20,30 @@ const initBlogs = [
 
 const initPosts = [
   {
-    id: 1, blogId: 1, title: "Tutorial 1"
+    id: 1, blogId: 1, title: "Tutorial 1",
+    content: generateContent(10),
+    tags: ["c#", "programming", "microsoft"]
   },
   {
-    id: 2, blogId: 1, title: "Tutorial 2"
+    id: 2, blogId: 1, title: "Tutorial 2",
+    content: generateContent(10),
+    tags: ["javascript", "es5", "es6"]
+  },
+  {
+    id: 3, blogId: 1, title: "Tutorial 3",
+    content: generateContent(10),
+    tags: ["javascript"]
   }
 ]
 
+function generateContent(words) {
+  let baseContent = `Contrary to popular belief, Lorem Ipsum is not simply random text. `;
+
+  for (let i = 0; i < words; i++) {
+    baseContent += baseContent;
+  }
+  return baseContent;
+}
 
 function App() {
   const [blogs, setBlogs] = useState(initBlogs);
@@ -75,15 +92,16 @@ function App() {
 
   function loadPosts(props) {
     console.log("lp:", props);
-    let p = posts.filter(post => post.blogId == props.match.params.blogId);
-    return <Posts posts={p} deletePost={deletePost} addPost={addPost} />
+    let blogId = props.match.params.blogId;
+    let p = posts.filter(post => post.blogId == blogId);
+    return <Posts blogId={blogId} posts={p} deletePost={deletePost} addPost={addPost} />
   }
 
   function readPost(props) {
     console.log("lp:", props);
     let p = posts.find(post => post.id == props.match.params.postId);
     console.log("Showing post: ", p);
-    return <PostRead post={p} />
+    return <PostRead blogId={p.blogId} post={p} />
   }
 
   return (
