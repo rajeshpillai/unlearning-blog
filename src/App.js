@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Blogs from './features/blogs'
 import BlogForm from './features/blogs/blog-form'
+import Posts from './features/posts';
 
-const defaultState = [
+
+const initBlogs = [
   {
     id: 1, title: "Learn Mathematics",
     desc: "Coming soon", category: "Mathematics", subcat: "Basic Maths"
@@ -14,10 +16,20 @@ const defaultState = [
   }
 ]
 
+const initPosts = [
+  {
+    id: 1, blogId: 1, title: "Tutorial 1"
+  },
+  {
+    id: 2, blogId: 1, title: "Tutorial 2"
+  }
+]
 
 
 function App() {
-  const [blogs, setBlogs] = useState(defaultState);
+  const [blogs, setBlogs] = useState(initBlogs);
+  const [posts, setPosts] = useState(initPosts);
+
 
   const showPosts = (blogId) => {
     alert(blogId);
@@ -30,6 +42,10 @@ function App() {
 
   const deleteBlog = id => {
     setBlogs(blogs.filter(blog => blog.id !== id))
+  }
+
+  const deletePost = id => {
+    setPosts(posts.filter(post => post.id !== id))
   }
 
   useEffect(() => {
@@ -46,6 +62,7 @@ function App() {
       <h2>Blogs Listing</h2>
       <BlogForm addBlog={addBlog} />
       <Blogs blogs={blogs} onShowPost={showPosts} deleteBlog={deleteBlog} />
+      <Posts posts={posts} deletePost={deletePost}/>
     </div>
   );
 }

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './index.css';
-
 
 export default function Blogs(props) {
   let { blogs } = props;
-
 
   useEffect(() => {
 
@@ -23,7 +20,7 @@ export default function Blogs(props) {
             Delete
          </button>
 
-          <hr className="blog-divider" />
+          <hr className="content-divider" />
         </div>
       )
     })
