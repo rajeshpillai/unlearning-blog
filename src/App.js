@@ -20,17 +20,17 @@ const initBlogs = [
 
 const initPosts = [
   {
-    id: 1, blogId: 1, title: "Tutorial 1",
+    id: 1, blogId: 1, title: "CSharp Tutorial",
     content: generateContent(10),
-    tags: ["c#", "programming", "microsoft"]
+    tags: ["csharp", "programming", "microsoft"]
   },
   {
-    id: 2, blogId: 1, title: "Tutorial 2",
+    id: 2, blogId: 1, title: "Learn ES6",
     content: generateContent(10),
     tags: ["javascript", "es5", "es6"]
   },
   {
-    id: 3, blogId: 1, title: "Tutorial 3",
+    id: 3, blogId: 1, title: "Learn JavaScript",
     content: generateContent(10),
     tags: ["javascript"]
   }
