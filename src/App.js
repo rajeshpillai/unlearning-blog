@@ -98,10 +98,16 @@ function App() {
   }
 
   function readPost(props) {
-    console.log("lp:", props);
     let p = posts.find(post => post.id == props.match.params.postId);
     console.log("Showing post: ", p);
     return <PostRead blogId={p.blogId} post={p} />
+  }
+
+  const postsByTag = ({ match }) => {
+    let { blogId, tag } = match.params;
+    console.log("Tag: ", blogId, tag);
+    let p = posts.filter(post => post.blogId == blogId && post.tags.includes(tag));
+    return <Posts blogId={blogId} posts={p} deletePost={deletePost} addPost={addPost} />
   }
 
   return (
@@ -117,6 +123,7 @@ function App() {
         <Route path="/blog-form" render={loadBlogForm} />
         <Route path="/blogs/:blogId/posts" render={loadPosts} />
         <Route path="/posts/:postId/read" render={readPost} />
+        <Route path="/posts/:blogId/tags/:tag" render={postsByTag} />
 
       </div>
     </Router>

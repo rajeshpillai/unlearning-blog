@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import PostForm from './post-form';
 
 import './post.css';
 
 export default function Posts({ posts, blogId, addPost, deletePost }) {
+
+  
 
   useEffect(() => {
 
@@ -27,7 +29,6 @@ export default function Posts({ posts, blogId, addPost, deletePost }) {
 
   return (
     <>
-     
       <PostForm addPost={addPost} />
       {postView}
     </>
