@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Blogs from './features/blogs'
 import BlogForm from './features/blogs/blog-form'
 import Posts from './features/posts';
+import PostRead from './features/posts/post-read';
 
 import './App.css';
 
@@ -78,6 +79,13 @@ function App() {
     return <Posts posts={p} deletePost={deletePost} addPost={addPost} />
   }
 
+  function readPost(props) {
+    console.log("lp:", props);
+    let p = posts.find(post => post.id == props.match.params.postId);
+    console.log("Showing post: ", p);
+    return <PostRead post={p} />
+  }
+
   return (
     <Router>
       <div className="app">
@@ -90,6 +98,8 @@ function App() {
         <Route exact path="/" render={loadBlog} />
         <Route path="/blog-form" render={loadBlogForm} />
         <Route path="/blogs/:blogId/posts" render={loadPosts} />
+        <Route path="/posts/:postId/read" render={readPost} />
+
       </div>
     </Router>
   );
