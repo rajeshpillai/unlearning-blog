@@ -1,8 +1,8 @@
 .app {
-  text-align: center;
 }
 
 .app-header {
+  text-align: center;
   background-color: #282c34;
   min-height: 5vh;
   display: flex;
@@ -18,16 +18,15 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content-wrapper{
+  display: flex;
+}
+.categories {
+  display: flex;
+  flex-direction: column;
+  flex: 20%;
 }
 
-.content-divider {
-  border: 1px dashed coral;
-  width: 70vw;
+.content-area {
+  flex:80%;
 }

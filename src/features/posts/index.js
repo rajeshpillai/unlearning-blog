@@ -7,7 +7,7 @@ import './post.css';
 
 export default function Posts({ posts, blogId, addPost, deletePost }) {
 
-  
+
 
   useEffect(() => {
 
@@ -22,7 +22,6 @@ export default function Posts({ posts, blogId, addPost, deletePost }) {
 
         <Link to={`/posts/${post.id}/read`}>Read more..</Link>
         <button onClick={() => deletePost(post.id)}>Delete</button>
-        <hr className="content-divider" />
       </div >
     )
   })

@@ -4,9 +4,14 @@ import Blogs from './features/blogs'
 import BlogForm from './features/blogs/blog-form'
 import Posts from './features/posts';
 import PostRead from './features/posts/post-read';
+import Categories from './features/categories';
 
 import './App.css';
 
+const initCategories = [
+  "Mathematics",
+  "Web Development"
+]
 const initBlogs = [
   {
     id: 1, title: "Learn Mathematics",
@@ -48,6 +53,7 @@ function generateContent(words) {
 function App() {
   const [blogs, setBlogs] = useState(initBlogs);
   const [posts, setPosts] = useState(initPosts);
+  const [categories, setCategories] = useState(initCategories);
 
 
   const showPosts = (blogId) => {
@@ -90,6 +96,12 @@ function App() {
     </>
   }
 
+  function loadCategories() {
+    return <>
+      <Categories categories={categories} />
+    </>
+  }
+
   function loadPosts(props) {
     console.log("lp:", props);
     let blogId = props.match.params.blogId;
@@ -119,11 +131,18 @@ function App() {
         </p>
           <Link to="/">Blogs</Link>
         </header>
-        <Route exact path="/" render={loadBlog} />
-        <Route path="/blog-form" render={loadBlogForm} />
-        <Route path="/blogs/:blogId/posts" render={loadPosts} />
-        <Route path="/posts/:postId/read" render={readPost} />
-        <Route path="/posts/:blogId/tags/:tag" render={postsByTag} />
+
+        <div className="content-wrapper">
+          <Categories categories={categories} />
+          <div className="content-area">
+            <Route exact path="/" render={loadBlog} />
+            <Route path="/blog-form" render={loadBlogForm} />
+            <Route path="/blogs/:blogId/posts" render={loadPosts} />
+            <Route path="/posts/:postId/read" render={readPost} />
+            <Route path="/posts/:blogId/tags/:tag" render={postsByTag} />
+          </div>
+        </div>
+
 
       </div>
     </Router>
