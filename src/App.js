@@ -1,24 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Blogs from './features/blogs'
+import BlogForm from './features/blogs/blog-form'
+
+const defaultState = [
+  {
+    id: 1, title: "Learn Mathematics",
+    desc: "Coming soon", category: "Mathematics", subcat: "Basic Maths"
+  },
+  {
+    id: 2, title: "Learn Angular Step By Step",
+    desc: "Coming soon", category: "Web Development", subcat: "Angular"
+  }
+]
+
+
 
 function App() {
+  const [blogs, setBlogs] = useState(defaultState);
+
+  const showPosts = (blogId) => {
+    alert(blogId);
+  }
+
+  const addBlog = blog => {
+    blog.id = blogs.length + 1;
+    setBlogs([...blogs, blog]);
+  }
+
+  const deleteBlog = id => {
+    setBlogs(blogs.filter(blog => blog.id !== id))
+  }
+
+  useEffect(() => {
+
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Unlearning Labs
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <h2>Blogs Listing</h2>
+      <BlogForm addBlog={addBlog} />
+      <Blogs blogs={blogs} onShowPost={showPosts} deleteBlog={deleteBlog} />
     </div>
   );
 }
