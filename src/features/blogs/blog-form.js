@@ -22,7 +22,7 @@ export default function BlogForm(props) {
     >
       <label>Title</label>
       <input type="text" name="title" value={blog.title} onChange={handleInputChange} />
-      <label>Description</label>
+      <label>Blog</label>
       <input type="text" name="desc" value={blog.desc} onChange={handleInputChange} />
       <button>Add new blog</button>
     </form>

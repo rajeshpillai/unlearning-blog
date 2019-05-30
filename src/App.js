@@ -45,6 +45,12 @@ function App() {
     setBlogs(blogs.filter(blog => blog.id !== id))
   }
 
+
+  const addPost = post => {
+    post.id = posts.length + 1;
+    setPosts([...posts, post]);
+  }
+
   const deletePost = id => {
     setPosts(posts.filter(post => post.id !== id))
   }
@@ -69,7 +75,7 @@ function App() {
   function loadPosts(props) {
     console.log("lp:", props);
     let p = posts.filter(post => post.blogId == props.match.params.blogId);
-    return <Posts posts={p} deletePost={deletePost} />
+    return <Posts posts={p} deletePost={deletePost} addPost={addPost} />
   }
 
   return (
@@ -83,7 +89,7 @@ function App() {
         </header>
         <Route exact path="/" render={loadBlog} />
         <Route path="/blog-form" render={loadBlogForm} />
-        <Route path="/posts/:blogId" render={loadPosts} />
+        <Route path="/blogs/:blogId/posts" render={loadPosts} />
       </div>
     </Router>
   );

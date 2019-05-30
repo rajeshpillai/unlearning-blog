@@ -16,7 +16,7 @@ export default function Blogs(props) {
           <div>{blog.desc}</div>
           <div>{blog.category}</div>
 
-          <Link to={`/posts/${blog.id}`}>Show Posts</Link>
+          <Link to={`/blogs/${blog.id}/posts`}>Show Posts</Link>
           <button onClick={() => props.deleteBlog(blog.id)} className="button muted-button">
             Delete
          </button>
