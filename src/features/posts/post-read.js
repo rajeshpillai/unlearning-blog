@@ -10,6 +10,7 @@ export default function PostRead({ post, blogId }) {
   return (
     <div>
       <Link to={`/blogs/${blogId}/posts`}>Back to posts</Link>
+      <Link to={`/posts/${post.id}/edit`}><button>EDIT</button></Link>
       <h2>{post.title} ${tagsUI}</h2>
       <div dangerouslySetInnerHTML={{ __html: md.render(post.content) }}></div>
     </div>
