@@ -5,6 +5,7 @@ import BlogForm from './features/blogs/blog-form'
 import Posts from './features/posts';
 import PostRead from './features/posts/post-read';
 import Categories from './features/categories';
+import AppContext from './context/app-context';
 
 import './App.css';
 
@@ -25,17 +26,17 @@ const initBlogs = [
 
 const initPosts = [
   {
-    id: 1, blogId: 1, title: "CSharp Tutorial",
+    id: 1, blogId: 1, title: "CSharp Tutorial", category: "Programming",
     content: generateContent(10),
     tags: ["csharp", "programming", "microsoft"]
   },
   {
-    id: 2, blogId: 1, title: "Learn ES6",
+    id: 2, blogId: 1, title: "Learn ES6", category: "Web Development",
     content: generateContent(10),
     tags: ["javascript", "es5", "es6"]
   },
   {
-    id: 3, blogId: 1, title: "Learn JavaScript",
+    id: 3, blogId: 1, title: "Learn JavaScript", category: "Web Development",
     content: generateContent(10),
     tags: ["javascript"]
   }
@@ -50,11 +51,23 @@ function generateContent(words) {
   return baseContent;
 }
 
+
+
+
 function App() {
   const [blogs, setBlogs] = useState(initBlogs);
   const [posts, setPosts] = useState(initPosts);
   const [categories, setCategories] = useState(initCategories);
+  const [blogId, setBlogId] = useState(null);
 
+  const appState = {
+    blogId: blogId,
+    setBlogId: function (blogId) {
+      this.blogId = blogId;
+      setBlogId(blogId);
+      console.log(`setting blogid to ${this.blogId}`);
+    }
+  }
 
   const showPosts = (blogId) => {
     alert(blogId);
@@ -85,7 +98,6 @@ function App() {
 
   function loadBlog() {
     return <>
-      <h2>Blogs Listing</h2>
       <Blogs blogs={blogs} onShowPost={showPosts} deleteBlog={deleteBlog} />
     </>
   }
@@ -96,21 +108,16 @@ function App() {
     </>
   }
 
-  function loadCategories() {
-    return <>
-      <Categories categories={categories} />
-    </>
-  }
-
   function loadPosts(props) {
     console.log("lp:", props);
-    let blogId = props.match.params.blogId;
-    let p = posts.filter(post => post.blogId == blogId);
+    let blogId = Number(props.match.params.blogId);
+    let p = posts.filter(post => post.blogId === blogId);
     return <Posts blogId={blogId} posts={p} deletePost={deletePost} addPost={addPost} />
   }
 
   function readPost(props) {
-    let p = posts.find(post => post.id == props.match.params.postId);
+    let postId = Number(props.match.params.postId);
+    let p = posts.find(post => post.id === postId);
     console.log("Showing post: ", p);
     return <PostRead blogId={p.blogId} post={p} />
   }
@@ -122,29 +129,37 @@ function App() {
     return <Posts blogId={blogId} posts={p} deletePost={deletePost} addPost={addPost} />
   }
 
+
+  const postsByCategories = ({ match }) => {
+    let { blogId, tag } = match.params;
+    console.log("Tag: ", blogId, tag);
+    let p = posts.filter(post => post.blogId == blogId && post.tags.includes(tag));
+    return <Posts blogId={blogId} posts={p} deletePost={deletePost} addPost={addPost} />
+  }
+
   return (
     <Router>
-      <div className="app">
-        <header className="app-header">
-          <p>
-            Unlearning Labs
+      <AppContext.Provider value={appState}>
+        <div className="app">
+          <header className="app-header">
+            <p>
+              Unlearning Labs
         </p>
-          <Link to="/">Blogs</Link>
-        </header>
-
-        <div className="content-wrapper">
-          <Categories categories={categories} />
-          <div className="content-area">
-            <Route exact path="/" render={loadBlog} />
-            <Route path="/blog-form" render={loadBlogForm} />
-            <Route path="/blogs/:blogId/posts" render={loadPosts} />
-            <Route path="/posts/:postId/read" render={readPost} />
-            <Route path="/posts/:blogId/tags/:tag" render={postsByTag} />
+            <Link to="/">Blogs</Link>
+          </header>
+          <div className="content-wrapper">
+            {appState.blogId && <Categories categories={categories} />}
+            <div className="content-area">
+              <Route exact path="/" render={loadBlog} />
+              <Route path="/blog-form" render={loadBlogForm} />
+              <Route path="/blogs/:blogId/posts" render={loadPosts} />
+              <Route path="/posts/:postId/read" render={readPost} />
+              <Route path="/posts/:blogId/tags/:tag" render={postsByTag} />
+              <Route path="/posts/:blogId/categories/:category" render={postsByCategories} />
+            </div>
           </div>
         </div>
-
-
-      </div>
+      </AppContext.Provider>
     </Router>
   );
 }

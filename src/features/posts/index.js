@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Route } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import PostForm from './post-form';
+import AppContext from '../../context/app-context';
+
 
 import './post.css';
 
 export default function Posts({ posts, blogId, addPost, deletePost }) {
-
-
+  const appContext = useContext(AppContext);
 
   useEffect(() => {
-
-  }, []);
+    appContext.setBlogId(blogId);
+    console.log(`setting blogid to ${blogId}`);
+  }, [appContext, blogId]);
 
   let postView = posts.map((post) => {
     return (
