@@ -23,6 +23,7 @@ export default function Posts({ posts, blogId, addPost, deletePost }) {
         <div>{post.category}</div>
 
         <Link to={`/posts/${post.id}/read`}>Read more..</Link>
+        <Link to={`/posts/${post.id}/edit`}><button>EDIT</button></Link>
         <button onClick={() => deletePost(post.id)}>Delete</button>
       </div >
     )

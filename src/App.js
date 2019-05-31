@@ -4,6 +4,7 @@ import Blogs from './features/blogs'
 import BlogForm from './features/blogs/blog-form'
 import Posts from './features/posts';
 import PostRead from './features/posts/post-read';
+import PostEdit from './features/posts/post-edit';
 import Categories from './features/categories';
 import AppContext from './context/app-context';
 
@@ -122,6 +123,13 @@ function App() {
     return <PostRead blogId={p.blogId} post={p} />
   }
 
+  function editPost(props) {
+    let postId = Number(props.match.params.postId);
+    let p = posts.find(post => post.id === postId);
+    console.log("Editing post: ", p);
+    return <PostEdit blogId={p.blogId} post={p} />
+  }
+
   const postsByTag = ({ match }) => {
     let { blogId, tag } = match.params;
     console.log("Tag: ", blogId, tag);
@@ -155,6 +163,7 @@ function App() {
               <Route path="/blog-form" render={loadBlogForm} />
               <Route path="/blogs/:blogId/posts" render={loadPosts} />
               <Route path="/posts/:postId/read" render={readPost} />
+              <Route path="/posts/:postId/edit" render={editPost} />
               <Route path="/posts/:blogId/tags/:tag" render={postsByTag} />
               <Route path="/posts/:blogId/categories/:category" render={postsByCategories} />
             </div>
