@@ -22,47 +22,90 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Commits on May 31, 2019
+Addeed edit post feature in read mode
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+@rajeshpillai
+rajeshpillai committed 37 seconds ago
+ 
+Added basic markdown support for post
 
-### `npm run eject`
+@rajeshpillai
+rajeshpillai committed 18 minutes ago
+ 
+Added remarkable markdown package as global
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+@rajeshpillai
+rajeshpillai committed 2 hours ago
+ 
+Added post-edit route
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+@rajeshpillai
+rajeshpillai committed 2 hours ago
+ 
+Added search posts by category
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+@rajeshpillai
+rajeshpillai committed 3 hours ago
+ 
+Fixed className
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+@rajeshpillai
+rajeshpillai committed 3 hours ago
+ 
+Added context to share blog data
 
-## Learn More
+@rajeshpillai
+rajeshpillai committed 3 hours ago
+ 
+Commits on May 30, 2019
+Added categories listing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+@rajeshpillai
+rajeshpillai committed 22 hours ago
+ 
+Added post/tag search feature
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+@rajeshpillai
+rajeshpillai committed 22 hours ago
+ 
+Added post/tag search feature
 
-### Code Splitting
+@rajeshpillai
+rajeshpillai committed 22 hours ago
+ 
+Added link back to posts from post
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+@rajeshpillai
+rajeshpillai committed 23 hours ago
+ 
+Added individual post component
 
-### Analyzing the Bundle Size
+@rajeshpillai
+rajeshpillai committed 23 hours ago
+ 
+Added post-form and posts routes
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+@rajeshpillai
+rajeshpillai committed a day ago
+ 
+Passing parameter to routes
 
-### Making a Progressive Web App
+@rajeshpillai
+rajeshpillai committed a day ago
+ 
+Added posts listing and delete post stub
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+@rajeshpillai
+rajeshpillai committed a day ago
+ 
+Basic project, structure create/delete blog feature - Iter 1
 
-### Advanced Configuration
+@rajeshpillai
+rajeshpillai committed a day ago
+ 
+Initial commit from Create React App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+@rajeshpillai
+rajeshpillai committed a day ago
+ 
