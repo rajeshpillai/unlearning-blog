@@ -29,17 +29,17 @@ const initBlogs = [
 const initPosts = [
   {
     id: 1, blogId: 1, title: "CSharp Tutorial", category: "Programming",
-    content: generateContent(10),
+    content: generateContent(3),
     tags: ["csharp", "programming", "microsoft"]
   },
   {
     id: 2, blogId: 1, title: "Learn ES6", category: "Web Development",
-    content: generateContent(10),
+    content: generateContent(3),
     tags: ["javascript", "es5", "es6"]
   },
   {
     id: 3, blogId: 1, title: "Learn JavaScript", category: "Web Development",
-    content: generateContent(10),
+    content: generateContent(3),
     tags: ["javascript"]
   }
 ]
@@ -77,8 +77,6 @@ function generateContent(words) {
 }
 
 
-
-
 function App() {
   const [blogs, setBlogs] = useState(initBlogs);
   const [posts, setPosts] = useState(initPosts);
@@ -112,6 +110,18 @@ function App() {
     post.id = posts.length + 1;
     setPosts([...posts, post]);
   }
+
+  const onPostUpdate = (blogId, postId, content) => {
+    let updatedPosts = posts.map((p) => {
+      if (p.id == postId && p.blogId == blogId) {
+        p.content = content;
+      }
+      return p;
+    })
+    console.log("update: ", updatedPosts);
+    setPosts(updatedPosts);
+  }
+
 
   const deletePost = id => {
     setPosts(posts.filter(post => post.id !== id))
@@ -150,8 +160,7 @@ function App() {
   function editPost(props) {
     let postId = Number(props.match.params.postId);
     let p = posts.find(post => post.id === postId);
-    console.log("Editing post: ", p);
-    return <PostEdit blogId={p.blogId} post={p} />
+    return <PostEdit updatePost={onPostUpdate} blogId={p.blogId} post={p} />
   }
 
   const postsByTag = ({ match }) => {
@@ -175,9 +184,7 @@ function App() {
       <AppContext.Provider value={appState}>
         <div className="app">
           <header className="app-header">
-            <p>
-              Unlearning Labs
-        </p>
+            <p>Unlearning Labs</p>
             <Link to="/">Blogs</Link>
           </header>
           <div className="content-wrapper">
