@@ -32,7 +32,7 @@ export default function Blogs(props) {
   });
 
   return (
-    <div class="blogs">
+    <div className="blogs">
       <h2>Blogs Listing</h2>
       {blogUI}
     </div>
