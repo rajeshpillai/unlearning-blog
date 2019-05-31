@@ -9,6 +9,7 @@ import Categories from './features/categories';
 import AppContext from './context/app-context';
 
 import './App.css';
+import { unlink } from 'fs';
 
 const initCategories = [
   "Programming",
@@ -44,12 +45,35 @@ const initPosts = [
 ]
 
 function generateContent(words) {
-  let baseContent = `Contrary to popular belief, Lorem Ipsum is not simply random text. `;
+  let content = "";
+  let uol = `
+      Unordered
+    + Create a list by starting a line with + ,  - , or  * 
+    + Sub-lists are made by indenting 2 spaces:
+      - Marker character change forces new list start:
+        * Ac tristique libero volutpat at
+        + Facilisis in pretium nisl aliquet
+        - Nulla volutpat aliquam velit
+    + Very easy!\r\n
+  `;
+
+  let ol = `
+      Ordered
+
+      1. Lorem ipsum dolor sit amet
+      2. Consectetur adipiscing elit
+      3. Integer molestie lorem at massa
+  `;
 
   for (let i = 0; i < words; i++) {
-    baseContent += baseContent;
+    let data = `# Heading ${i}\r\n`;
+    data += `## This is an <h2> tag\r\n`;
+    data += `Contrary to **popular belief**, Lorem Ipsum is not simply random text.\r\n`;
+    data += uol;
+    data += ol;
+    content += data;
   }
-  return baseContent;
+  return content;
 }
 
 
