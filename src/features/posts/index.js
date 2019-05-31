@@ -31,6 +31,7 @@ export default function Posts({ posts, blogId, addPost, deletePost }) {
   return (
     <>
       <PostForm addPost={addPost} />
+      <Link to={`/blogs/${blogId}/posts`}>ALL POSTS</Link>
       {postView}
     </>
   )

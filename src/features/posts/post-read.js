@@ -9,7 +9,7 @@ export default function PostRead({ post, blogId }) {
   })
   return (
     <div>
-      <Link to={`/blogs/${blogId}/posts`}>Posts</Link>
+      <Link to={`/blogs/${blogId}/posts`}>Back to posts</Link>
       <h2>{post.title} ${tagsUI}</h2>
       <div>{post.content}</div>
     </div>

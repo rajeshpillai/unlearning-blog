@@ -10,7 +10,7 @@ import AppContext from './context/app-context';
 import './App.css';
 
 const initCategories = [
-  "Mathematics",
+  "Programming",
   "Web Development"
 ]
 const initBlogs = [
@@ -131,9 +131,10 @@ function App() {
 
 
   const postsByCategories = ({ match }) => {
-    let { blogId, tag } = match.params;
-    console.log("Tag: ", blogId, tag);
-    let p = posts.filter(post => post.blogId == blogId && post.tags.includes(tag));
+    let { blogId, category } = match.params;
+    console.log("Categories: ", blogId, category);
+    let p = posts.filter(post => post.blogId == blogId && post.category.toLowerCase() == category);
+    console.log("PostByCategory: ", p);
     return <Posts blogId={blogId} posts={p} deletePost={deletePost} addPost={addPost} />
   }
 
