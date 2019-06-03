@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Editor from '../../components/editor';
 
 export default function PostEdit(props) {
   let { post, blogId, updatePost } = props;
