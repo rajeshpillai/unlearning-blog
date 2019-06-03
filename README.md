@@ -14,7 +14,6 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-
 ### Todos
 
 - [x] Basic project structure
@@ -34,6 +33,3 @@ You will also see any lint errors in the console.
 - [x] Added ace editor to post
 - [x] Added basic Rating Component
 - [x] Added Comment Component and connected post to comments
-
-
-
