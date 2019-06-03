@@ -6,7 +6,7 @@ import Comments from '../comments';
 let md = new window.Remarkable();
 export default function PostRead({ post, blogId }) {
   let tagsUI = post.tags.map((tag) => {
-    return <Link to={`/posts/${blogId}/tags/${tag}?blogId=${blogId}`} key={tag} className="tag" > {tag}</Link >
+    return <Link className="post-tag" to={`/posts/${blogId}/tags/${tag}?blogId=${blogId}`} key={tag} > {tag}</Link >
   });
 
   return (

@@ -13,7 +13,7 @@ export default function PostEdit(props) {
   let currentValue = post.content;
 
   let tagsUI = post.tags.map((tag) => {
-    return <Link to={`/posts/${blogId}/tags/${tag}?blogId=${blogId}`} key={tag} className="tag" > {tag}</Link >
+    return <Link to={`/posts/${blogId}/tags/${tag}?blogId=${blogId}`} key={tag} className="post-tag" > {tag}</Link >
   });
 
   function onUpdatePost(e) {
