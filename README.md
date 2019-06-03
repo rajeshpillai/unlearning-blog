@@ -15,7 +15,7 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 
-### Tosos
+### Todos
 
 - [x] Basic project structure
 - [x] Create delete blog
