@@ -30,17 +30,20 @@ const initPosts = [
   {
     id: 1, blogId: 1, title: "CSharp Tutorial", category: "Programming",
     content: generateContent(3),
-    tags: ["csharp", "programming", "microsoft"]
+    tags: ["csharp", "programming", "microsoft"],
+    rating: 4,
   },
   {
     id: 2, blogId: 1, title: "Learn ES6", category: "Web Development",
     content: generateContent(3),
-    tags: ["javascript", "es5", "es6"]
+    tags: ["javascript", "es5", "es6"],
+    rating: 5,
   },
   {
     id: 3, blogId: 1, title: "Learn JavaScript", category: "Web Development",
     content: generateContent(3),
-    tags: ["javascript"]
+    tags: ["javascript"],
+    rating: 2,
   }
 ]
 
