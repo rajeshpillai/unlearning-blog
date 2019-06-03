@@ -1,10 +1,17 @@
 .comments {
-  background-color:darkslategrey;
-  border-radius: 4px;
-  padding: 4px;
-  color: white;
+  border: 1px solid rgba(0,0,0,0.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  border-radius: 3px;
+  font-size: 20px;
 }
 .comment {
+  margin:0;
+  padding:0;
   color: black;
-  background: wheat;
+  padding-left: 20px;
+  border-bottom: 1px solid  rgba(0,0,0,0.09);
+}
+
+.comment-date, .comment-author {
+  color: rgba(0,0,0,.54);
 }

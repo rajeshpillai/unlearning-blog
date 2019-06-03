@@ -16,6 +16,7 @@ export default function PostRead({ post, blogId }) {
       <h2>{post.title} ${tagsUI}</h2>
       Rating: <Rating value={post.rating} />
       <div dangerouslySetInnerHTML={{ __html: md.render(post.content) }}></div>
+      <h2>Conversations:</h2>
       <Comments comments={post.comments} />
     </div>
   )
