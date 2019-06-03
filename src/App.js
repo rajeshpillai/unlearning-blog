@@ -32,6 +32,10 @@ const initPosts = [
     content: generateContent(3),
     tags: ["csharp", "programming", "microsoft"],
     rating: 4,
+    comments: [
+      { id: 1, postId: 1, author: "rajesh", content: "Nice",commentedOn:new Date() },
+      { id: 2, postId: 1, author: "jai", content: "Hi", commentedOn: new Date() },
+    ]
   },
   {
     id: 2, blogId: 1, title: "Learn ES6", category: "Web Development",

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Rating from '../../components/rating';
+import Comments from '../comments';
 
 let md = new window.Remarkable();
 export default function PostRead({ post, blogId }) {
@@ -13,8 +14,9 @@ export default function PostRead({ post, blogId }) {
       <Link to={`/blogs/${blogId}/posts`}>Back to posts</Link>
       <Link to={`/posts/${post.id}/edit`}><button>EDIT</button></Link>
       <h2>{post.title} ${tagsUI}</h2>
-      Rating: <Rating value={post.rating} /> 
+      Rating: <Rating value={post.rating} />
       <div dangerouslySetInnerHTML={{ __html: md.render(post.content) }}></div>
+      <Comments comments={post.comments} />
     </div>
   )
 }
