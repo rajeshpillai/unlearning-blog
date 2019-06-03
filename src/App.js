@@ -114,6 +114,7 @@ function App() {
 
 
   const addPost = post => {
+    console.log("Adding post: ", post);
     post.id = posts.length + 1;
     setPosts([...posts, post]);
   }
