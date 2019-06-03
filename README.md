@@ -33,4 +33,7 @@ You will also see any lint errors in the console.
 - [x] Added edit post feature in read mode
 - [x] Added ace editor to post
 - [x] Added basic Rating Component
+- [x] Added Comment Component and connected post to comments
+
+
 
