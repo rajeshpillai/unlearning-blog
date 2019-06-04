@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,Router } from 'react-router-dom';
 
 import PostForm from './post-form';
 import AppContext from '../../context/app-context';
@@ -33,6 +33,7 @@ export default function Posts({ posts, blogId, addPost, deletePost }) {
     <>
       <PostForm addPost={addPost} />
       <Link to={`/blogs/${blogId}/posts`}>ALL POSTS</Link>
+      <Link to="/posts/new"><span title="new post" className="btn btn-round">+</span></Link>
       {postView}
     </>
   )
