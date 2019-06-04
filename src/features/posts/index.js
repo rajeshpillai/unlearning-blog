@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link,Router } from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 
 import PostForm from './post-form';
 import AppContext from '../../context/app-context';
@@ -29,12 +29,18 @@ export default function Posts({ posts, blogId, addPost, deletePost }) {
     )
   })
 
-  return (
-    <>
+  function loadPostForm() {
+    return (
       <PostForm addPost={addPost} />
+    )
+  }
+
+  return (
+    <Router>
+      <Route path='/blogs/:blogId/posts/new' render={loadPostForm} />
       <Link to={`/blogs/${blogId}/posts`}>ALL POSTS</Link>
-      <Link to="/posts/new"><span title="new post" className="btn btn-round">+</span></Link>
+      <Link to={`/blogs/${blogId}/posts/new`}><span title="new post" className="btn btn-round">+</span></Link>
       {postView}
-    </>
+    </Router>
   )
 }
